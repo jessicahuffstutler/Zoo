@@ -13,14 +13,29 @@ public class Zoo {
     }
 
     static Animal createAnimal(String animalName) { //creating methods
-        if (animalName.equals("snake")) {
-            return new Snake();
-        } else if (animalName.equals("lion")) {
-            return new Lion();
-        } else if (animalName.equals("condor")) {
-            return new Condor();
-        } else {
-            return new Animal();
+        Animal animal;
+        switch (animalName) { //this is how you start a switch statement
+            case "snake":
+                animal = new Snake();
+                break;
+            case "lion":
+                animal = new Lion();
+                break;
+            case "condor":
+                animal = new Condor();
+                break;
+            //doing this in the code instead of creating an explicit class.
+            case "alligator":
+                animal = new Reptile() { //we immediately type the curly brace
+                    @Override
+                    public String toString() {
+                        return "Alligator";
+                    }
+                }; //semi colon after last curly brace
+                break;
+            default:
+                animal = new Animal();
         }
+         return animal;
     }
 }
